@@ -16,12 +16,15 @@ rm -rf ~/.local/share/containers
 Remove-Item -Recurse -Force "$env:USERPROFILE\.config\containers" -ErrorAction SilentlyContinue
 Remove-Item -Recurse -Force "$env:USERPROFILE\.local\share\containers" -ErrorAction SilentlyContinue
 B. Restart WSL
-Bashwsl --shutdown
+```bash
+wsl --shutdown
 C. Update WSL
-Bashwsl --update
+```bash
+wsl --update
 wsl --install --no-distribution
 
 After completing steps A, B, and C, run these commands:
-Bashpodman machine init
+```bash
+podman machine init
 podman machine start
 podman info
