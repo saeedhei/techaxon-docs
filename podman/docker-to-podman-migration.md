@@ -7,6 +7,7 @@ You have successfully removed the old Podman machine. Follow these steps if `pod
 ```bash
 # Force remove existing machine
 podman machine rm -f podman-machine-default
+```
 
 # Remove Podman configuration folders
 rm -rf ~/.config/containers
@@ -18,13 +19,16 @@ Remove-Item -Recurse -Force "$env:USERPROFILE\.local\share\containers" -ErrorAct
 B. Restart WSL
 ```bash
 wsl --shutdown
+```
 C. Update WSL
 ```bash
 wsl --update
 wsl --install --no-distribution
+```
 
 After completing steps A, B, and C, run these commands:
 ```bash
 podman machine init
 podman machine start
 podman info
+```
