@@ -14,8 +14,10 @@ rm -rf ~/.config/containers
 rm -rf ~/.local/share/containers
 
 # Also run these commands in PowerShell:
+```PowerShell
 Remove-Item -Recurse -Force "$env:USERPROFILE\.config\containers" -ErrorAction SilentlyContinue
 Remove-Item -Recurse -Force "$env:USERPROFILE\.local\share\containers" -ErrorAction SilentlyContinue
+```
 B. Restart WSL
 ```bash
 wsl --shutdown
