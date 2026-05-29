@@ -10,8 +10,10 @@ podman machine rm -f podman-machine-default
 ```
 
 # Remove Podman configuration folders
+```bash
 rm -rf ~/.config/containers
 rm -rf ~/.local/share/containers
+```
 
 # Also run these commands in PowerShell:
 ```PowerShell
