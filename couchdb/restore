@@ -1,3 +1,5 @@
+docker stop couchdb
+
 docker run --rm \
   -v couchdb_data:/data \
   -v $(pwd):/backup \
