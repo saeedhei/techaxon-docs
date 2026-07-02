@@ -1,0 +1,52 @@
+# docker-compose.yml
+services:
+  traefik:
+    image: traefik:v3.7
+    restart: unless-stopped
+    command:
+      - "--api.dashboard=true"
+      - "--providers.docker=true"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
+      - "--entrypoints.web.http.redirections.entryPoint.scheme=https"
+      - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
+      - "--certificatesresolvers.myresolver.acme.email=saeed@gmail.com" 
+      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+    ports:
+      - "80:80"
+      - "443:443"
+      # پورت 8080 را حذف کردیم تا کسی نتواند رمز را دور بزند
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./letsencrypt:/letsencrypt
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.dashboard.rule=Host(`traefik.techaxon.de`)"
+      - "traefik.http.routers.dashboard.entrypoints=websecure"
+      - "traefik.http.routers.dashboard.tls.certresolver=myresolver"
+      - "traefik.http.routers.dashboard.service=api@internal" 
+      - "traefik.http.routers.dashboard.middlewares=auth,mylimit"
+      - "traefik.http.middlewares.auth.basicauth.users=admin:$$2y$$05$$xNTLJdVwa.etzJrEfOsdw.ZH9ZKB5eWLltYxQbG9JvrxfcyKkykhG"
+      - "traefik.http.middlewares.mylimit.ratelimit.average=5"
+      - "traefik.http.middlewares.mylimit.ratelimit.burst=10"
+
+  frontend:
+    image: nginx:1.25-alpine 
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.frontend.rule=Host(`techaxon.de`)" 
+      - "traefik.http.routers.frontend.entrypoints=websecure" 
+      - "traefik.http.routers.frontend.tls.certresolver=myresolver"
+      - "traefik.http.services.frontend-service.loadbalancer.server.port=80"
+  kanban:
+    image: nginx:1.25-alpine
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.kanban.rule=Host(`kanban.techaxon.de`)" 
+      - "traefik.http.routers.kanban.entrypoints=websecure" 
+      - "traefik.http.routers.kanban.tls.certresolver=myresolver" 
+      - "traefik.http.services.kanban.loadbalancer.server.port=80"    
+
