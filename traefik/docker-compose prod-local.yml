@@ -1,0 +1,42 @@
+# docker-compose.yml
+services:
+  traefik:
+    image: traefik:v3.7
+    command:
+      - "--api.dashboard=true"
+      - "--providers.docker=true"
+      - "--entrypoints.web.address=:80"
+    ports:
+      - "80:80"
+      # پورت 8080 را حذف کردیم تا کسی نتواند رمز را دور بزند
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    labels:
+      - "traefik.enable=true"
+      
+      # ۲. تعریف روتر برای داشبورد روی پورت 80
+      - "traefik.http.routers.dashboard.rule=Host(`dashboard.localhost`)"
+      - "traefik.http.routers.dashboard.entrypoints=web"
+      - "traefik.http.routers.dashboard.service=api@internal" # اتصال روتر به بخش داخلی داشبورد
+      - "traefik.http.routers.dashboard.middlewares=auth,mylimit"
+      # ۴. تعریف نام کاربری و رمز عبور (admin / StrongPassword123)
+      - "traefik.http.middlewares.auth.basicauth.users=admin:$$2y$$05$$xNTLJdVwa.etzJrEfOsdw.ZH9ZKB5eWLltYxQbG9JvrxfcyKkykhG"
+      - "traefik.http.middlewares.mylimit.ratelimit.average=5"
+      - "traefik.http.middlewares.mylimit.ratelimit.burst=10"
+
+  whoami:
+    image: traefik/whoami
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.whoami.rule=Host(`localhost`)" 
+      - "traefik.http.routers.whoami.entrypoints=web"         
+      - "traefik.http.services.whoami-service.loadbalancer.server.port=80"
+
+  webapp:
+    image: nginx:alpine
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.webapp.rule=Host(`a.localhost`)" 
+      - "traefik.http.routers.webapp.entrypoints=web"          
+      - "traefik.http.services.webapp.loadbalancer.server.port=80"      
+
