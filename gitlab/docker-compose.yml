@@ -1,0 +1,67 @@
+services:
+  gitlab:
+    image: gitlab/gitlab-ce:latest
+    container_name: gitlab
+    restart: unless-stopped
+    hostname: ${DOMAIN}
+    env_file: [ .env ]
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url "https://#{ENV['DOMAIN']}"
+        registry_external_url "https://#{ENV['DOMAIN']}:5050"
+        gitlab_rails['time_zone'] = 'UTC'
+        gitlab_rails['initial_root_password'] = "#{ENV['OWNER_PASSWORD']}"
+        gitlab_rails['gitlab_email_from'] = "#{ENV['OWNER_EMAIL']}"
+        gitlab_rails['gitlab_email_display_name'] = "GitLab"
+        gitlab_rails['gitlab_shell_ssh_port'] = 2222
+
+        # harden sign-ups
+        gitlab_rails['gitlab_signup_enabled'] = false
+        gitlab_rails['gitlab_default_can_create_group'] = false
+
+        # built-in NGINX + Let's Encrypt
+        nginx['listen_https'] = true
+        nginx['redirect_http_to_https'] = true
+        letsencrypt['enable'] = true
+        letsencrypt['contact_emails'] = ["#{ENV['OWNER_EMAIL']}"]
+
+        # SMTP: relay via host (Postfix null-client)
+        gitlab_rails['smtp_enable'] = true
+        gitlab_rails['smtp_address'] = "host.docker.internal"
+        gitlab_rails['smtp_port'] = 25
+        gitlab_rails['smtp_domain'] = "#{ENV['DOMAIN']}"
+        gitlab_rails['smtp_tls'] = false
+        gitlab_rails['smtp_enable_starttls_auto'] = false
+        gitlab_rails['smtp_openssl_verify_mode'] = 'none'
+        gitlab_rails['gitlab_email_reply_to'] = "noreply@#{ENV['DOMAIN']}"
+
+        # UNIX sockets only
+        gitlab_workhorse['listen_network'] = 'unix'
+        gitlab_workhorse['listen_addr']    = '/var/opt/gitlab/gitlab-workhorse/sockets/socket'
+        puma['listen'] = nil
+        puma['port']   = nil
+        puma['socket'] = '/var/opt/gitlab/gitlab-rails/sockets/gitlab.socket'
+
+        # I Added to turn off prometheus
+        prometheus_monitoring['enable'] = false
+    ports:
+      - "80:80"
+      - "443:443"
+      - "2222:22"
+      - "5050:5050"
+    volumes:
+      - ./config:/etc/gitlab
+      - ./logs:/var/log/gitlab
+      - ./data:/var/opt/gitlab
+
+  gitlab-runner:
+    image: gitlab/gitlab-runner:alpine
+    container_name: gitlab-runner
+    restart: unless-stopped
+    depends_on: [ gitlab ]
+    env_file: [ .env ]
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./runner-config:/etc/gitlab-runner
