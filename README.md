@@ -20,12 +20,11 @@ For infrastructure setups, deployment scripts, and framework guidelines, navigat
 - ### [CouchDB](/couchdb/)
 
   <details>
-     <summary>Database operations including</summary>
-
-  > - **[Indexing Guide (2026)](/couchdb/couchDB-indexing.md)**
-  > - **[CLI execution](/couchdb/run-with-cli.md)**
-  > - **[Backups](/couchdb/backup.md)**
-  > - **[Restoration routines](/couchdb/restore)**
+     <summary>Database operations</summary>
+  - **[Indexing Guide (2026)](/couchdb/couchDB-indexing.md)**
+  - **[CLI execution](/couchdb/run-with-cli.md)**
+  - **[Backups](/couchdb/backup.md)**
+  - **[Restoration routines](/couchdb/restore)**
 
   </details>
 
