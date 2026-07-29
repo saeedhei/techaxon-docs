@@ -17,27 +17,36 @@ Before committing code or starting architectural tasks, please review our core o
 
 For infrastructure setups, deployment scripts, and framework guidelines, navigate through the specific domains below:
 
-- ### [CouchDB](/couchdb/)
+<details>
+    <summary><b>&nbsp;CouchDB</b></summary>
 
-  <details>
-     <summary>Database operations</summary>
-  - **[Indexing Guide (2026)](/couchdb/couchDB-indexing.md)**
-  - **[CLI execution](/couchdb/run-with-cli.md)**
-  - **[Backups](/couchdb/backup.md)**
-  - **[Restoration routines](/couchdb/restore)**
+- **[Indexing Guide (2026)](/couchdb/couchDB-indexing.md)**
+- **[CLI execution](/couchdb/run-with-cli.md)**
+- **[Backups](/couchdb/backup.md)**
+- **[Restoration routines](/couchdb/restore)**
 
-  </details>
+</details>
+<details>
+    <summary><b>&nbsp;Next (NestJS Backend)</b></summary>
 
-- ### [Next (NestJS Backend)](/next/)
-  - Backend development guides covering **[NestJS Business Logic Best Practices](/next/NestJS_Business_Logic_Best_Practice.md)** and framework **[Installation](/next/install.md)**.
+- **[NestJS Business Logic Best Practices](/next/NestJS_Business_Logic_Best_Practice.md)**
+- **[Installation](/next/install.md)**
 
-- ### [DevOps & Infrastructure Frameworks]
-  - **[AWS](/aws/)**: Cloud architectures and the **[Amazon Cognito Workshop](/aws/Amazon-Cognito-Workshop.md)**.
-  - **[GitLab](/gitlab/)**: Self-hosted setups, runner configurations, pipelines, and **[Repository Mirroring](/gitlab/GitLab%20Self-Hosted%20to%20GitHub%20Repository%20Mirroring%20Setup.md)**.
-  - **[Traefik](/traefik/)**: Reverse proxy profiles across production-local and development **docker-compose** configurations.
+</details>
+<details>
+    <summary><b>&nbsp;DevOps & Infrastructure Frameworks</b></summary>
 
-- ### [Containers](/podman/)
-  - Container runtime environments and **[Docker to Podman Migration steps](/podman/docker-to-podman-migration.md)**.
+- **[AWS](/aws/)**: Cloud architectures and the **[Amazon Cognito Workshop](/aws/Amazon-Cognito-Workshop.md)**.
+- **[GitLab](/gitlab/)**: Self-hosted setups, runner configurations, pipelines, and **[Repository Mirroring](/gitlab/GitLab%20Self-Hosted%20to%20GitHub%20Repository%20Mirroring%20Setup.md)**.
+- **[Traefik](/traefik/)**: Reverse proxy profiles across production-local and development **docker-compose** configurations.
+
+</details>
+<details>
+    <summary><b>&nbsp;Containers</b></summary>
+
+- Container runtime environments and **[Docker to Podman Migration steps](/podman/docker-to-podman-migration.md)**.
+
+</details>
 
 ## ✍️ Contributing to Docs
 
