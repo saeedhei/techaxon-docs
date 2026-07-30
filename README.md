@@ -1,57 +1,151 @@
-# Techaxon Documentation Hub
+# Techaxon Documentation
 
-Welcome to the centralized documentation repository for the Techaxon engineering team. This repository serves as our single source of truth for technical standards, workflows, infrastructure setups, and cultural guidelines.
+Central documentation for engineering standards, architecture, infrastructure, and development guides.
 
-## 🚀 Team Guidelines & Core Rules
-
-Before committing code or starting architectural tasks, please review our core operational frameworks:
-
-- **[Code of Conduct](/guidelines/code-of-conduct.md)**  
-  _Our cultural foundations. Covers professional expectations, mutual respect, and engineering team values._
-- **[Git & Workflow Rules](/guidelines/git-workflow.md)**  
-  _Our technical boundaries. Covers branching strategies, Merge Request (MR) procedures, and commit naming conventions._
-- **[Engineering Best Practices](/guidelines/engineering-best-practices.md)**  
-  _Our technical standards. Covers architectural design patterns, database constraints (including CouchDB document ID requirements), and code quality guidelines._
-
-## 📁 Repository Directory Map
-
-For infrastructure setups, deployment scripts, and framework guidelines, navigate through the specific domains below:
+---
 
 <details>
-    <summary><b>&nbsp;CouchDB</b></summary>
+<summary><b>📏 Standards</b></summary>
 
-- **[Indexing Guide (2026)](/couchdb/couchDB-indexing.md)**
-- **[CLI execution](/couchdb/run-with-cli.md)**
-- **[Backups](/couchdb/backup.md)**
-- **[Restoration routines](/couchdb/restore)**
+- [Code of Conduct](./standards/code-of-conduct.md)
+- [Git Workflow](./standards/git-workflow.md)
+- [Engineering Standards](./standards/engineering.md)
 
-</details>
 <details>
-    <summary><b>&nbsp;Next (NestJS Backend)</b></summary>
+<summary><b>🗄️ Database Standards</b></summary>
 
-- **[NestJS Business Logic Best Practices](/next/NestJS_Business_Logic_Best_Practice.md)**
-- **[Installation](/next/install.md)**
-
-</details>
 <details>
-    <summary><b>&nbsp;DevOps & Infrastructure Frameworks</b></summary>
+<summary><b>CouchDB</b></summary>
 
-- **[AWS](/aws/)**: Cloud architectures and the **[Amazon Cognito Workshop](/aws/Amazon-Cognito-Workshop.md)**.
-- **[GitLab](/gitlab/)**: Self-hosted setups, runner configurations, pipelines, and **[Repository Mirroring](/gitlab/GitLab%20Self-Hosted%20to%20GitHub%20Repository%20Mirroring%20Setup.md)**.
-- **[Traefik](/traefik/)**: Reverse proxy profiles across production-local and development **docker-compose** configurations.
-
-</details>
-<details>
-    <summary><b>&nbsp;Containers</b></summary>
-
-- Container runtime environments and **[Docker to Podman Migration steps](/podman/docker-to-podman-migration.md)**.
+- [Indexing Guide (2026)](./standards/databases/couchdb/indexing.md)
+- [Document ID Rules](./standards/databases/couchdb/document-id.md)
+- [Mango Queries](./standards/databases/couchdb/mango-queries.md)
+- [Replication Rules](./standards/databases/couchdb/replication.md)
 
 </details>
 
-## ✍️ Contributing to Docs
+<details>
+<summary><b>PostgreSQL</b></summary>
 
-Documentation is a living entity. If you update a workflow, configure a new pipeline, or notice outdated steps:
+- [Indexing](./standards/databases/postgresql/indexing.md)
+- [Naming Convention](./standards/databases/postgresql/naming.md)
 
-1. Create a new branch off `main`.
-2. Apply changes following standard markdown readability rules.
-3. Open a Merge Request for review.
+</details>
+
+<details>
+<summary><b>MongoDB</b></summary>
+
+- [Indexing](./standards/databases/mongodb/indexing.md)
+
+</details>
+
+</details>
+
+<details>
+<summary><b>⚙️ Backend Standards</b></summary>
+
+- [API Design](./standards/backend/api-design.md)
+- [Authentication](./standards/backend/authentication.md)
+- [Authorization](./standards/backend/authorization.md)
+- [Error Handling](./standards/backend/error-handling.md)
+
+</details>
+
+<details>
+<summary><b>🔒 Security Standards</b></summary>
+
+- [OWASP](./standards/security/owasp.md)
+- [JWT](./standards/security/jwt.md)
+
+</details>
+&nbsp;
+</details>
+
+---
+
+<details>
+<summary><b>🏗️ Architecture</b></summary>
+
+- [System Architecture](./architecture/system-architecture.md)
+- [Design Patterns](./architecture/design-patterns.md)
+- [Architecture Decision Records](./architecture/adr.md)
+
+</details>
+
+---
+
+<details>
+<summary><b>💻 Backend</b></summary>
+
+- [NestJS](./backend/nestjs.md)
+- [REST API](./backend/rest.md)
+- [GraphQL](./backend/graphql.md)
+
+</details>
+
+---
+
+<details>
+<summary><b>🗄️ Databases</b></summary>
+
+<details>
+<summary><b>CouchDB</b></summary>
+
+- [Getting Started](./databases/couchdb/getting-started.md)
+- [Mango Queries](./databases/couchdb/mango.md)
+- [Replication](./databases/couchdb/replication.md)
+
+</details>
+
+<details>
+<summary><b>PostgreSQL</b></summary>
+
+- [Getting Started](./databases/postgresql/getting-started.md)
+
+</details>
+
+</details>
+
+---
+
+<details>
+<summary><b>🚀 Infrastructure</b></summary>
+
+- [Docker](./infrastructure/docker.md)
+- [Kubernetes](./infrastructure/kubernetes.md)
+- [CI/CD](./infrastructure/ci-cd.md)
+
+</details>
+
+---
+
+<details>
+<summary><b>🧪 Testing</b></summary>
+
+- [Unit Testing](./testing/unit-testing.md)
+- [Integration Testing](./testing/integration-testing.md)
+- [End-to-End Testing](./testing/e2e.md)
+
+</details>
+
+---
+
+<details>
+<summary><b>📖 Runbooks</b></summary>
+
+- [Deployment](./runbooks/deployment.md)
+- [Backup & Restore](./runbooks/backup.md)
+- [Troubleshooting](./runbooks/troubleshooting.md)
+
+</details>
+
+---
+
+<details>
+<summary><b>📚 References</b></summary>
+
+- [Books](./references/books.md)
+- [Articles](./references/articles.md)
+- [Glossary](./references/glossary.md)
+
+</details>
