@@ -1,3 +1,4 @@
+```
 sudo docker compose run --rm gitlab-runner register \
   --non-interactive \
   --url "https://gitlab.techaxon.de" \
@@ -7,6 +8,7 @@ sudo docker compose run --rm gitlab-runner register \
 
 sudo ls -la /opt/gitlab/runner-config
 sudo cat /opt/gitlab/runner-config/config.toml
+```
 
 
 
