@@ -9,7 +9,18 @@ Central documentation for engineering standards, architecture, infrastructure, a
 
 - [Code of Conduct](./standards/code-of-conduct.md)
 - [Git Workflow](./standards/git-workflow.md)
-- [Engineering Standards](./standards/engineering.md)
+
+<details>
+<summary><b>📐 Engineering Standards</b></summary>
+
+- [Change Approval](./standards/engineering/change-approval.md)
+- [Production Environment](./standards/engineering/production-environment.md)
+- [Validation](./standards/engineering/validation.md)
+- [Code Comments](./standards/engineering/code-comments.md)
+- [Stable Versions](./standards/engineering/stable-versions.md)
+- [Type Safety](./standards/engineering/type-safety.md)
+
+</details>
 
 <details>
 <summary><b>🗄️ Database Standards</b></summary>
@@ -56,6 +67,7 @@ Central documentation for engineering standards, architecture, infrastructure, a
 
 - [OWASP](./standards/security/owasp.md)
 - [JWT](./standards/security/jwt.md)
+- [Source Code Licensing](./standards/security/source-code-licensing.md)
 
 </details>
 &nbsp;
