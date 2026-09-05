@@ -70,6 +70,28 @@ Central documentation for engineering standards, architecture, infrastructure, a
 - [Source Code Licensing](./standards/security/source-code-licensing.md)
 
 </details>
+
+<details>
+<summary><b>📜 Legal Standards</b></summary>
+
+- [Checklist](./standards/legal/checklist.md)
+
+<details>
+<summary><b>Website</b></summary>
+
+- [Abmahnung](./standards/legal/website/abmahnung.md)
+- [Contact Forms](./standards/legal/website/contact-forms.md)
+- [Cookies](./standards/legal/website/cookies.md)
+- [Copyright](./standards/legal/website/copyright.md)
+- [Ecommerce](./standards/legal/website/ecommerce.md)
+- [Impressum](./standards/legal/website/impressum.md)
+- [Privacy](./standards/legal/website/privacy.md)
+- [Third Party Services](./standards/legal/website/third-party-services.md)
+- [Tracking](./standards/legal/website/tracking.md)
+
+</details>
+
+</details>
 &nbsp;
 </details>
 
